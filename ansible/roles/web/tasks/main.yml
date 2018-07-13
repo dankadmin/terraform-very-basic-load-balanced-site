@@ -1,0 +1,26 @@
+---
+- name: install nginx
+  yum:
+    name: nginx
+    state: present
+- name: Start Nginx
+  service:
+    name: nginx
+    enabled: yes
+    state: started
+- name: Copy www directory
+  copy:
+    src: ../files/www
+    dest: /var/www
+- name: Create main page from template
+  template: 
+    src: ../templates/index.html.j2
+    dest: /var/www/index.html
+    owner: nginx
+    group: nginx
+    mode: 0655
+- name: Copy nginx.conf
+  template: 
+    src: ../templates/nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  notify: restart nginx

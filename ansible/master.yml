@@ -1,0 +1,11 @@
+- hosts: all
+  become: true
+
+  roles:
+    - common
+
+- hosts: role_web
+  become: true
+
+  roles:
+    - web

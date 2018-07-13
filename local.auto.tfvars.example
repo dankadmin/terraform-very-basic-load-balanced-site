@@ -1,0 +1,4 @@
+aws_region = "us-east-1"
+control_public_key_path = "./ssh/control_key.pub"
+control_key_path = "./ssh/control_key"
+control_cidrs = ["111.111.111.111/32", "222.222.222.222/32"]

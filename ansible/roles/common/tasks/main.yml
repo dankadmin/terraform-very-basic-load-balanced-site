@@ -1,0 +1,30 @@
+---
+- name: Add Git
+  yum:
+    name: git
+    state: present
+- name: Add Vim
+  yum:
+    name: vim
+    state: present
+- name: Add GNU Screen
+  yum:
+    name: screen
+    state: present
+- name: Copy vimrc to root
+  copy:
+    src: ~/.vimrc
+    dest: /root/
+    group: root
+    owner: root
+- name: Create vim swap directory
+  file:
+    path: /root/.vim/swap
+    state: directory
+    recurse: yes
+- name: Copy screenrc to root
+  copy:
+    src: ~/.screenrc
+    dest: /root/
+    group: root
+    owner: root
